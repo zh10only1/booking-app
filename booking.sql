@@ -2,13 +2,13 @@ CREATE DATABASE IF NOT EXISTS bookingDB;
 USE bookingDB;
 
 CREATE TABLE IF NOT EXISTS bookings (
-    DepartureDate VARCHAR(20),
+    DepartureDate DATE,
     BookingNumber BIGINT PRIMARY KEY,
     TO_Name VARCHAR(255),
     FlightNumber VARCHAR(255),
     FlightDepTime TIME,
     PickUpTime TIME,
-    PickupDate VARCHAR(20),
+    PickupDate DATE,
     Hotel VARCHAR(255),
     PickupPoint VARCHAR(255),
     ServiceType VARCHAR(255),
