@@ -24,13 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['csv_file']) && $_FILE
         // Parse data from CSV file line by line
         while (($line = fgetcsv($csvFile)) !== FALSE) {
             // Get row data
-            $departureDate = $line[0];
+            $departureDate = DateTime::createFromFormat('d-M-y', $line[0])->format('Y-m-d');
             $bookingNumber = $line[1];
             $toName = $line[2];
             $flightNumber = $line[3];
             $flightDepTime = $line[4];
             $pickUpTime = $line[5];
-            $pickupDate = $line[6];
+            $pickupDate = DateTime::createFromFormat('d-M-y', $line[6])->format('Y-m-d');
             $hotel = $line[7];
             $pickupPoint = $line[8];
             $serviceType = $line[9];
@@ -63,6 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['csv_file']) && $_FILE
 
         // Delete CSV file after processing
         unlink($_FILES['csv_file']['tmp_name']);
+
+        // Delete records older than 5 days from the current date
+        $deleteStmt = $conn->prepare("DELETE FROM bookings WHERE DepartureDate < CURDATE() - INTERVAL 5 DAY");
+        $deleteStmt->execute();
+        $deleteStmt->close();
 
         http_response_code(200);
         echo json_encode(["success" => true, "message" => "CSV file successfully processed."]);
