@@ -52,7 +52,7 @@ Setup Instructions
 
 2.  *Test the API with Postman*:
     -   Open Postman.
-    -   Create a new POST request with the URL http://localhost/booking/upload.php.
+    -   Create a new POST request with the URL http://localhost/booking/save-csv.php.
     -   In the Body tab, select form-data.
     -   Add a key named csv_file, set its type to File, and upload your CSV file.
     -   Send the request and check the response.
