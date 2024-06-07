@@ -37,11 +37,11 @@ Setup Instructions
 ### Step 3: Configure the PHP Application
 1.  **Create a New Directory in htdocs**:
     -   Open your terminal or command prompt or file explorer and navigate to the XAMPP C:\xampp\htdocs directory.
-    -   Create a new directory named booking:
+    -   Create a new directory named booking.
 
 2.  *Clone the Repository*:
     -   Clone the repository into the booking directory:
-        git clone https://github.com/yourusername/csv-processor.git .
+        `git clone https://github.com/zh10only1/booking-app`
 
 3.  **Ensure db_connection.php Exists**:
     -   The db_connection.php file should already be present in the repository. Verify that it includes the correct database connection settings. *Replace the database parameters with your own credentials*.
