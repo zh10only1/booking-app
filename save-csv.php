@@ -22,7 +22,7 @@ function parseDate($dateStr) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['csv_file']) && $_FILES['csv_file']['error'] == UPLOAD_ERR_OK) {
     // Check if the file type is CSV
     $fileType = mime_content_type($_FILES['csv_file']['tmp_name']);
-    echo $fileType;
+
     if ($fileType == 'text/csv') {
         // Open uploaded CSV file with read-only mode
         $csvFile = fopen($_FILES['csv_file']['tmp_name'], 'r');
